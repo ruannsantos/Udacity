@@ -63,5 +63,15 @@ Drive the robot around the environment to generate the map. The rtabmap.db file 
 rtabmap-databaseViewer ~/.ros/rtabmap.db
 ```
 
+## Download the RTAB-Map Database
+The `rtabmap.db` file is too large for GitHub. Download it from Google Drive:
+
+**[Download rtabmap.db](https://drive.google.com/drive/folders/1et_BawkTyAJv1oLXu0QkgK3NUZs_LXBM?usp=sharing)**
+
+After downloading, place it in the project root (`Project4/`) or in `~/.ros/` to use with the database viewer:
+```bash
+rtabmap-databaseViewer ~/Downloads/rtabmap.db
+```
+
 ## Author
 Ruan Santos - Udacity Robotics Software Engineer Nanodegree
