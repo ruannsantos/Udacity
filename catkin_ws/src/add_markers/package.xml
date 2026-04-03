@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <n>add_markers</n>
+  <version>0.0.0</version>
+  <description>Add markers package - virtual object visualization</description>
+  <maintainer email="ruan_sfs@hotmail.com">Ruan</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <export></export>
+</package>
