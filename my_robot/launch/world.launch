@@ -26,12 +26,16 @@
              <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find my_robot)/urdf/my_robot.xacro'"/>
 
              <!-- Spawn My Robot -->
-             <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
-                   args="-urdf -param robot_description -model my_robot 
+             <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+                   launch-prefix="bash -c 'sleep 5; $0 $@'"
+                   args="-urdf -param robot_description -model my_robot
                          -x $(arg x) -y $(arg y) -z $(arg z)
                          -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
   <!--launch rviz-->
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen"
+        args="-d $(find my_robot)/config/my_robot.rviz" required="false">
+    <env name="LIBGL_ALWAYS_SOFTWARE" value="1"/>
+  </node>
 
 </launch>

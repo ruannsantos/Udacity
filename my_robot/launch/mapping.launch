@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-
   <!-- RTAB-Map Mapping -->
   <arg name="database_path" default="rtabmap.db"/>
   <arg name="args" default="--delete_db_on_start"/>
@@ -21,27 +20,44 @@
       <remap from="depth/image" to="/camera/depth/image_raw"/>
       <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
 
+
       <!-- RTAB-Map's parameters -->
+      <param name="Rtabmap/DetectionRate" type="string" value="1"/>
       <param name="RGBD/NeighborLinkRefining" type="string" value="true"/>
       <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
-      <param name="RGBD/AngularUpdate" type="string" value="0.01"/>
-      <param name="RGBD/LinearUpdate" type="string" value="0.01"/>
+      <param name="RGBD/AngularUpdate" type="string" value="0.1"/>
+      <param name="RGBD/LinearUpdate" type="string" value="0.1"/>
       <param name="RGBD/ProximityBySpace" type="string" value="true"/>
-      <param name="Reg/Strategy" type="string" value="0"/>
+      <param name="RGBD/OptimizeMaxError" type="string" value="3.0"/>
       <param name="Reg/Force3DoF" type="string" value="true"/>
-      <param name="Vis/MinInliers" type="string" value="15"/>
+      <param name="Reg/Strategy" type="string" value="2"/>
+      <param name="Vis/MinInliers" type="string" value="5"/>
       <param name="Mem/RehearsalSimilarity" type="string" value="0.30"/>
+      <param name="Mem/NotLinkedNodesKept" type="string" value="false"/>
       <param name="RGBD/ProximityPathMaxNeighbors" type="string" value="10"/>
       <param name="Rtabmap/TimeThr" type="string" value="700"/>
 
-      <!-- Loop closure parameters -->
-      <param name="Kp/MaxDepth" type="string" value="4.0"/>
+      <!-- Loop closure parameters (SURF) -->
       <param name="Kp/DetectorStrategy" type="string" value="0"/>
-      <param name="SURF/HessianThreshold" type="string" value="100"/>
+      <param name="Kp/MaxFeatures" type="string" value="800"/>
+      <param name="Kp/MaxDepth" type="string" value="5.0"/>
+      <param name="SURF/HessianThreshold" type="string" value="50"/>
 
-      <!-- Output -->
-      <param name="grid_cell_size" type="double" value="0.05"/>
+      <!-- ICP parameters (for neighbor link refining) -->
+      <param name="Icp/Strategy" type="string" value="1"/>
+      <param name="Icp/CorrespondenceRatio" type="string" value="0.3"/>
+      <param name="Icp/MaxCorrespondenceDistance" type="string" value="0.3"/>
+      <param name="Icp/PMMatcherEpsilon" type="string" value="0.01"/>
+      <param name="Icp/PointToPlane" type="string" value="false"/>
+
+      <!-- Grid map parameters -->
+      <param name="Grid/CellSize" type="string" value="0.05"/>
+      <param name="Grid/RayTracing" type="string" value="true"/>
+      <param name="Grid/FromDepth" type="string" value="false"/>
+      <param name="Grid/MaxObstacleHeight" type="string" value="2.0"/>
+      <param name="Grid/MinGroundHeight" type="string" value="-0.4"/>
+      <param name="Grid/NormalsSegmentation" type="string" value="false"/>
+
     </node>
   </group>
-
 </launch>
